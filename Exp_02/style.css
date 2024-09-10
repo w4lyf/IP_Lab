@@ -1,0 +1,155 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  color: #2c3e50;
+}
+
+header {
+  text-align: center;
+  background-color: #ff6347;
+  padding: 20px;
+  color: white;
+  border-radius: 10px;
+}
+
+nav {
+  text-align: center;
+  margin: 20px 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #2980b9;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+nav a:hover {
+  background-color: #3498db;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  border-radius: 50%;
+}
+
+#services ul {
+  list-style: none;
+  padding: 0;
+}
+
+#services ul li {
+  padding: 10px;
+  background-color: #ecf0f1;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+}
+
+img {
+  border-radius: 10px;
+}
+
+#company-details table {
+  margin: 0 auto;
+  border: 1px solid #bdc3c7;
+  width: 70%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ecf0f1;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+
+th {
+  background-color: #3498db;
+  color: white;
+  border-radius: 5px;
+} 
+
+#promotional-media {
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.media-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.media-item {
+  margin-bottom: 30px;
+  padding: 10px;
+  transition: transform 0.5s ease-in-out;
+  opacity: 0;
+  animation: fadeInUp 1.5s forwards;  
+}
+
+.media-item h3 {
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #2980b9;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.media-item:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+.media-item1:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+
+footer {
+  text-align: center;
+  background-color: #34495e;
+  color: white;
+  padding: 10px 0;
+  border-radius: 0 0 10px 10px;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
