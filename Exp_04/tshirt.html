@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>T-Shirt Order Form</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="form-container">
+    <h1>T-Shirt Order Form</h1>
+    <form id="orderForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" maxlength="60" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="mobile">Mobile No:</label>
+        <input type="text" id="mobile" name="mobile" required />
+      </div>
+      <div class="form-group">
+        <label for="size">T-Shirt Size:</label>
+        <select id="size" name="size" required>
+          <option value="" disabled selected>Select Size</option>
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+          <option value="xlarge">Extra Large</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="color">T-Shirt Color:</label>
+        <select id="color" name="color" required>
+          <option value="" disabled selected>Select Color</option>
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+          <option value="black">Black</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required />
+      </div>
+      <div class="form-group">
+        <label for="message">Message on T-Shirt (Max 60 characters):</label>
+        <textarea id="message" name="message" maxlength="60" required></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit">Submit Order</button>
+      </div>
+    </form>
+    <div id="receipt" class="receipt"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
