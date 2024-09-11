@@ -1,0 +1,62 @@
+/* Background Gradient */
+.background-gradient {
+    background: linear-gradient(135deg, #2b2d2f 0%, #1c1e22 100%);
+    min-height: 100vh;
+}
+
+/* Profile Photo */
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 5px solid #fff;
+    transition: transform 0.3s ease;
+}
+
+/* Photo Hover Effect */
+.profile-photo:hover {
+    transform: scale(1.1);
+}
+
+/* Skills Section */
+.skills-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #f1f1f1;
+}
+
+.skills-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.skills-section li {
+    font-size: 1.1rem;
+    color: #bbb;
+}
+
+/* Button Hover Effect */
+.btn-outline-light:hover {
+    background-color: #fff;
+    color: #000;
+    transition: background-color 0.2s ease;
+}
+
+/* Card Styles */
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Section Margins */
+.mb-5 {
+    margin-bottom: 3rem;
+}
+
+/* About Me Section */
+.profile-section p.lead {
+    font-size: 1.25rem;
+}
