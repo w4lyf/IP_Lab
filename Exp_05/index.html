@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative JavaScript Tools</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #eaeaea;
+            font-family: 'Arial', sans-serif;
+        }
+        .header {
+            background: #ff6b6b;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 5px solid #ff3d3d;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            color: white;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .button {
+            background: #4a90e2;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #357ABD;
+        }
+        .result {
+            margin-top: 1rem;
+            font-size: 1.25rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Creative JavaScript Tools</h1>
+    </header>
+
+    <main class="max-w-3xl mx-auto p-6 space-y-8">
+        <!-- Prime Generator Section -->
+        <div class="card">
+            <h2 class="text-xl font-bold mb-4">Generate Prime Numbers</h2>
+            <input type="number" id="primeLimitInput" placeholder="Enter upper limit" class="border rounded px-3 py-2 w-full mb-4">
+            <button id="primeButton" class="button">Generate Primes</button>
+            <div id="primeOutput" class="result"></div>
+        </div>
+
+        <!-- Square Generator Section -->
+        <div class="card">
+            <h2 class="text-xl font-bold mb-4">Square Generator</h2>
+            <input type="text" id="squareInput" placeholder="Comma-separated numbers" class="border rounded px-3 py-2 w-full mb-4">
+            <button id="squareButton" class="button">Generate Squares</button>
+            <div id="squareOutput" class="result"></div>
+        </div>
+
+        <!-- Calculator Section -->
+        <div class="card">
+            <h2 class="text-xl font-bold mb-4">Promise-based Calculator</h2>
+            <div class="flex space-x-2 mb-4">
+                <input type="number" id="firstNumber" placeholder="First Number" class="border rounded px-3 py-2 w-full">
+                <select id="calcOperation" class="border rounded px-3 py-2">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                </select>
+                <input type="number" id="secondNumber" placeholder="Second Number" class="border rounded px-3 py-2 w-full">
+            </div>
+            <button id="calcButton" class="button">Calculate</button>
+            <div id="calcOutput" class="result"></div>
+        </div>
+    </main>
+
+    <script>
+        // Prime Number Generator
+        function* primeGenerator(limit) {
+            function isPrime(n) {
+                if (n < 2) return false;
+                for (let i = 2; i <= Math.sqrt(n); i++) {
+                    if (n % i === 0) return false;
+                }
+                return true;
+            }
+
+            for (let n = 2; n <= limit; n++) {
+                if (isPrime(n)) yield n;
+            }
+        }
+
+        document.getElementById('primeButton').onclick = () => {
+            const limit = parseInt(document.getElementById('primeLimitInput').value);
+            const primes = Array.from(primeGenerator(limit)).join(', ');
+            document.getElementById('primeOutput').textContent = `Prime Numbers: ${primes}`;
+        };
+
+        // Square Generator
+        document.getElementById('squareButton').onclick = () => {
+            const numbers = document.getElementById('squareInput').value.split(',').map(num => parseFloat(num.trim())).filter(num => !isNaN(num));
+            const squares = numbers.map(num => num * num).join(', ');
+            document.getElementById('squareOutput').textContent = `Squares: ${squares}`;
+        };
+
+        // Calculator Functionality
+        const performCalculation = (numA, numB, op) => new Promise((resolve, reject) => {
+            if (isNaN(numA) || isNaN(numB)) {
+                return reject('Both inputs must be valid numbers.');
+            }
+
+            switch (op) {
+                case '+': return resolve(numA + numB);
+                case '-': return resolve(numA - numB);
+                case '*': return resolve(numA * numB);
+                case '/':
+                    if (numB === 0) return reject('Cannot divide by zero.');
+                    return resolve(numA / numB);
+                default: return reject('Unknown operation.');
+            }
+        });
+
+        document.getElementById('calcButton').onclick = () => {
+            const numA = parseFloat(document.getElementById('firstNumber').value);
+            const numB = parseFloat(document.getElementById('secondNumber').value);
+            const operation = document.getElementById('calcOperation').value;
+
+            performCalculation(numA, numB, operation)
+                .then(res => document.getElementById('calcOutput').textContent = `Result: ${res}`)
+                .catch(err => document.getElementById('calcOutput').textContent = `Error: ${err}`);
+        };
+    </script>
+</body>
+</html>
